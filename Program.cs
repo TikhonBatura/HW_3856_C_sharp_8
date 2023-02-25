@@ -5,9 +5,7 @@ Start();
 void Start()
 {
     while (true)
-    {
-
-
+    {      
         System.Console.WriteLine("\nЗадача 54: Задайте двумерный массив. \r\nНапишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.");
         System.Console.WriteLine("\nЗадача 56: Задайте прямоугольный двумерный массив. \r\nНапишите программу, которая будет находить строку с наименьшей суммой элементов.");
         System.Console.WriteLine("\nЗадача 58: Задайте две матрицы. \r\nНапишите программу, которая будет находить произведение двух матриц.");
@@ -68,6 +66,24 @@ void Start()
             case 58:
                 Console.Clear();
 
+                int rowsOne = EnterNumber("Enter for 1th matrix row size: ");
+                int columsOne = EnterNumber("Enter for 1th matrix colums size: ");
+                int minValueOne = EnterNumber("\nEnter MinValue for 1th matrix ");
+                int maxValueOne = EnterNumber("Enter MaxValue for 1th matrix ");
+                int [,] matrixOne = GetMatrix(rowsOne, columsOne, minValueOne, maxValueOne);
+                System.Console.WriteLine();
+                
+                int rowsTwo = EnterNumber("Enter for 2th matrix row size: ");
+                int columsTwo = EnterNumber("Enter for 2th matrix colums size: ");
+                int minValueTwo = EnterNumber("\nEnter MinValue for 2th matrix ");
+                int maxValueTwo = EnterNumber("Enter MaxValue for 2th matrix ");
+                int [,] matrixTwo = GetMatrix(rowsTwo, columsTwo, minValueTwo, maxValueTwo);
+                System.Console.WriteLine();
+                
+                PrintMatrix(matrixOne);
+                Console.WriteLine();
+                PrintMatrix(matrixTwo);
+                Console.WriteLine();
 
 
                 break;
@@ -79,6 +95,7 @@ void Start()
 
                 break;
 
+        default: System.Console.WriteLine("error"); break;
 
         }
     }
@@ -128,7 +145,7 @@ void PrintMatrix(int[,] matrix)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            System.Console.Write(matrix[i, j] + " ");
+            System.Console.Write("{0,4}", matrix[i, j]);
         }
         System.Console.WriteLine();
     }
@@ -192,7 +209,7 @@ void FindMinSumRows(int[,] matrix)
         if (i == 0)
         {
             rowMinSum = rowSum;
-            rowMinSumIndex = i;
+            rowMinSumIndex = i+1;
         }    
         else if (rowSum < rowMinSum)
         {
